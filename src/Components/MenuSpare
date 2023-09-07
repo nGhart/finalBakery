@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import menuitems from './menuData';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import face from '../images/6861718.png';
+import SingleMenuItem from './SingleMenuItem';
+
+const allCats = ['all', ...new Set(menuitems.map((item) => item.category))];
+console.log(allCats);
+
+function Menu() {
+  //const [menuItems, setMenuItems] = useState(menuitems);
+  //const [categories, setCategories] = useState(allCats);
+  const [search, setSearch] = useState('');
+  const searchResults = menuitems.filter((val) => {
+    if (search === '') {
+      return true; // Show all items when search is empty
+    } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+      return true; // Show items that match the search
+    }
+    return false; // Hide items that don't match the search
+  });
+
+  // const filterMenu = (category) => {
+  //   if (category === 'all') {
+  //     setMenuItems(menuitems);
+  //     return;
+  //   }
+  //   const newMenu = menuitems.filter((item) => item.category === category);
+  //   setMenuItems(newMenu);
+  // };
+  return (
+    <>
+      <div className="title text-center menuSection">
+        <h1>Menu</h1>
+        <div className="searchAndFilter">
+          {/* <div className="text-center filterContainer">
+            <MenuCategories filterMenu={filterMenu} categories={categories} />
+          </div> */}
+          <input
+            type="text"
+            className="search"
+            placeholder="Search menu ..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Container className="menuItems">
+            <Row className="menu">
+              {searchResults.length > 0 ? (
+                searchResults.map((val, id) => (
+                  // <Col sm={6} lg={4} key={val.id}>
+                  //   <Card style={{ margin: '10px' }} className="cardBoxes">
+                  //     <div>
+                  //       <Row>
+                  //         <Col sm={4}>
+                  //           <img
+                  //             src={val.img}
+                  //             alt="item"
+                  //             width="100%"
+                  //             height="100%"
+                  //           />
+                  //         </Col>
+
+                  //         <Col sm={8}>
+                  //           <Card.Body>
+                  //             <Card.Title className="itemNprice">
+                  //               {val.title}
+                  //               <span className="price">GHC {val.price}</span>
+                  //             </Card.Title>
+                  //             <Card.Text>
+                  //               Lorem ipsum dolor sit amet, consectetuer
+                  //               adipiscing elit.
+                  //             </Card.Text>
+                  //             <Card.Subtitle className="mb-2 text-muted">
+                  //               Photo by <a href={val.picLink}>{val.artist}</a>{' '}
+                  //               on{' '}
+                  //               <a href={val.siteLink} className="credit">
+                  //                 Unsplash
+                  //               </a>{' '}
+                  //             </Card.Subtitle>
+                  //             <button className="filterButtons">
+                  //               Add to Cart
+                  //             </button>
+                  //           </Card.Body>
+                  //         </Col>
+                  //       </Row>
+                  //     </div>
+                  //   </Card>
+                  // </Col>
+                  <SingleMenuItem val={val} key={val.id} />
+                ))
+              ) : (
+                <div className="sorrySection">
+                  <div className="sorryContainer">
+                    <img src={face} alt="sad face" className="sorry" />
+                    <h2>Sorry </h2>
+                  </div>
+                  <h5>We do not carry that item on our menu</h5>
+                </div>
+              )}
+            </Row>
+          </Container>
+        </div>
+        <Container className="menuItems">
+          {/* <MenuItems menuItems={menuItems} /> */}
+        </Container>
+      </div>
+    </>
+  );
+}
+
+export default Menu;
