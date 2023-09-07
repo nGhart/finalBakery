@@ -17,9 +17,7 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
-.font {
-  font-family: 'Abril Fatface', cursive;
-}
+
 /* Navbar */
 .navbar {
   width: 100%;
@@ -488,6 +486,8 @@ img {
   padding: 15px;
   min-width: 320px;
 }
+@media screen and {
+}
 .payStackTotal,
 .payStackSummary {
   border-bottom: 2px solid #d6970a;
@@ -684,4 +684,13 @@ input {
   #reviewText {
     padding: 0 100px;
   }
+}
+.font {
+  font-family: 'Abril Fatface', cursive;
+}
+.font1 {
+  font-family: 'Grandiflora One', serif;
+}
+.font2 {
+  font-family: 'Waterfall', cursive;
 }
