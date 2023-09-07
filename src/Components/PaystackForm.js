@@ -38,12 +38,10 @@ function PaystackForm({ props }) {
     },
     onClose: () => alert('Get it while it lasts!!!'),
   };
-  console.log(componentProps);
-  console.log(typeof amount);
   return (
     <Container className="cart title">
       <Row>
-        <Col sm={8} md={10} lg={4} className="paystackSection">
+        <Col className="paystackSection">
           {' '}
           <h1>Checkout</h1>
           <div className="">
