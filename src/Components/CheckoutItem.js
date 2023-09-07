@@ -6,7 +6,7 @@ const CheckoutItem = (props) => {
   const cartItemCount = cartItems[props.val.id];
   return (
     <>
-      <p className="itemNprice">
+      <p className="itemNprice font1" style={{ fontWeight: '700' }}>
         {props.val.title}
         <span className="payStackSummaryPrice">
           <span style={{ marginRight: '30px' }}>{cartItemCount}</span>
